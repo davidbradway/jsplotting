@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<!--[if lt IE 7 ]><html class="ie ie6" lang="en"> <![endif]-->
+<!--[if IE 7 ]><html class="ie ie7" lang="en"> <![endif]-->
+<!--[if IE 8 ]><html class="ie ie8" lang="en"> <![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!--><html lang="en"> <!--<![endif]-->
+<meta charset="utf-8">
+<script src="http://code.jquery.com/jquery-1.8.2.js"></script>
+<script src="http://code.jquery.com/ui/1.9.0/jquery-ui.js"></script>
+<script></script>
+<script src="http://jquery-csv.googlecode.com/git/src/jquery.csv.js"></script>
+<script src="http://canvasjs.com/assets/script/canvasjs.min.js"></script>
+<script type="text/javascript">
+window.onload = function () {
+
+  var pathOfFileToRead = "plotwatt_appliance_data.csv";
+  var request = new XMLHttpRequest();
+  request.open("GET", pathOfFileToRead, false);
+  request.send(null);
+  var aRawData = $.csv.toArrays(request.responseText);
+
+  var chart0 = new CanvasJS.Chart("chartContainer0", { zoomEnabled: true, panEnabled: true, axisX: {labelAngle: -30} });
+  chart0.options.axisY = { suffix: "KWh", includeZero: false, title: "Energy Consumed" };
+  //chart0.options.title = {text: "Plotwatt Data"};
+
+  var dataPoints0 = [], dataPoints1 = [], dataPoints2 = [], dataPoints3 = [], dataPoints4 = [], dataPoints5 = [];
+
+  for (var i = 0; i < aRawData.length; ++i) {
+      dataPoints0.push({ x: new Date(Date.parse(aRawData[i][6])), y: parseFloat(aRawData[i][0]) });
+      dataPoints1.push({ x: new Date(Date.parse(aRawData[i][6])), y: parseFloat(aRawData[i][1]) });
+      dataPoints2.push({ x: new Date(Date.parse(aRawData[i][6])), y: parseFloat(aRawData[i][2]) });
+      dataPoints3.push({ x: new Date(Date.parse(aRawData[i][6])), y: parseFloat(aRawData[i][3]) });
+      dataPoints4.push({ x: new Date(Date.parse(aRawData[i][6])), y: parseFloat(aRawData[i][4]) });
+      dataPoints5.push({ x: new Date(Date.parse(aRawData[i][6])), y: parseFloat(aRawData[i][5]) });
+  }
+  var dataSeries0 = { type: "stackedArea", name: "Always On",     showInLegend: true };
+  var dataSeries1 = { type: "stackedArea", name: "Heating & A/C", showInLegend: true };
+  var dataSeries2 = { type: "stackedArea", name: "Refrigeration", showInLegend: true };
+  var dataSeries3 = { type: "stackedArea", name: "Dryer",         showInLegend: true };
+  var dataSeries4 = { type: "stackedArea", name: "Cooking",       showInLegend: true };
+  var dataSeries5 = { type: "stackedArea", name: "Other",         showInLegend: true };
+  dataSeries0.dataPoints = dataPoints0;
+  dataSeries1.dataPoints = dataPoints1;
+  dataSeries2.dataPoints = dataPoints2;
+  dataSeries3.dataPoints = dataPoints3;
+  dataSeries4.dataPoints = dataPoints4;
+  dataSeries5.dataPoints = dataPoints5;
+
+  chart0.options.data = [];
+  chart0.options.data.push(dataSeries0);
+  chart0.options.data.push(dataSeries1);
+  chart0.options.data.push(dataSeries2);
+  chart0.options.data.push(dataSeries3);
+  chart0.options.data.push(dataSeries4);
+  chart0.options.data.push(dataSeries5);
+  chart0.render();
+
+  var a2009      = new Array();
+  var a2010      = new Array();
+  var aSunday    = new Array();
+  var aMonday    = new Array();
+  var aTuesday   = new Array();
+  var aWednesday = new Array();
+  var aThursday  = new Array();
+  var aFriday    = new Array();
+  var aSaturday  = new Array();
+  var aJanuary   = new Array();
+  var aFebruary  = new Array();
+  var aMarch     = new Array();
+  var aApril     = new Array();
+  var aMay       = new Array();
+  var aJune      = new Array();
+  var aJuly      = new Array();
+  var aAugust    = new Array();
+  var aSeptember = new Array();
+  var aOctober   = new Array();
+  var aNovember  = new Array();
+  var aDecember  = new Array();
+  for (var i = 0; i < aRawData.length; ++i) {
+    var d = new Date(Date.parse(aRawData[i][6]));
+         if (d.getFullYear() == 2009){a2009.push(i);}
+    else if (d.getFullYear() == 2010){a2010.push(i);}
+         if (d.getDay() == 0){aSunday.push(i);}
+    else if (d.getDay() == 1){aMonday.push(i);}
+    else if (d.getDay() == 2){aTuesday.push(i);}
+    else if (d.getDay() == 3){aWednesday.push(i);}
+    else if (d.getDay() == 4){aThursday.push(i);}
+    else if (d.getDay() == 5){aFriday.push(i);}
+    else if (d.getDay() == 6){aSaturday.push(i);}
+         if (d.getMonth() == 0){aJanuary.push(i);}
+    else if (d.getMonth() == 1){aFebruary.push(i);}
+    else if (d.getMonth() == 2){aMarch.push(i);}
+    else if (d.getMonth() == 3){aApril.push(i);}
+    else if (d.getMonth() == 4){aMay.push(i);}
+    else if (d.getMonth() == 5){aJune.push(i);}
+    else if (d.getMonth() == 6){aJuly.push(i);}
+    else if (d.getMonth() == 7){aAugust.push(i);}
+    else if (d.getMonth() == 8){aSeptember.push(i);}
+    else if (d.getMonth() == 9){aOctober.push(i);}
+    else if (d.getMonth() ==10){aNovember.push(i);}
+    else if (d.getMonth() ==11){aDecember.push(i);}
+  }
+
+  var a2009AlwaysOn         = new Array();
+  var a2009HeatingAC        = new Array();
+  var a2009Refrigeration    = new Array();
+  var a2009Dryer            = new Array();
+  var a2009Cooking          = new Array();
+  var a2009Other            = new Array();
+  var a2009DatetimeMidpoint = new Array();
+
+  function parseArrayElements(element){
+    a2009AlwaysOn.push(parseFloat(aRawData[element][0]));
+    a2009HeatingAC.push(parseFloat(aRawData[element][1]));
+    a2009Refrigeration.push(parseFloat(aRawData[element][2]));
+    a2009Dryer.push(parseFloat(aRawData[element][3]));
+    a2009Cooking.push(parseFloat(aRawData[element][4]));
+    a2009Other.push(parseFloat(aRawData[element][5]));
+    a2009DatetimeMidpoint.push(new Date(Date.parse(aRawData[element][6])));
+  }
+  //Use ForEach on the indices saved in 2009 to pull the appropriate values into new arrays
+  a2009.forEach(parseArrayElements);
+
+  var bigArray = a2009AlwaysOn.concat(a2009HeatingAC, a2009Refrigeration, a2009Dryer, a2009Cooking, a2009Other);
+  var total = bigArray.reduce(function(a,b){return a+b;});
+
+  //want to use this to plot doughnut charts of $/day breakdowns of appliance usage in 2009 and 2010
+  var chart = new CanvasJS.Chart("chartContainer",
+  {
+    //title:{ text: "Average Usage 2009"},          
+    data: [{
+      type: "doughnut",
+      startAngle: 60,  
+      toolTipContent: "{y}%",
+      showInLegend: false,
+      dataPoints: [
+        {y: Math.round(a2009AlwaysOn.reduce(function(a,b){return a+b;})/total*100),      label: "Always On {y}%",     legendText: "Always On" },
+        {y: Math.round(a2009HeatingAC.reduce(function(a,b){return a+b;})/total*100),     label: "Heating & A/C {y}%", legendText: "Heating & A/C" },
+        {y: Math.round(a2009Refrigeration.reduce(function(a,b){return a+b;})/total*100), label: "Refrigeration {y}%", legendText: "Refrigeration" },
+        {y: Math.round(a2009Dryer.reduce(function(a,b){return a+b;})/total*100),         label: "Dryer {y}%",         legendText: "Dryer" },
+        {y: Math.round(a2009Cooking.reduce(function(a,b){return a+b;})/total*100),       label: "Cooking {y}%",       legendText: "Cooking" },
+        {y: Math.round(a2009Other.reduce(function(a,b){return a+b;})/total*100),         label: "Other {y}%",         legendText: "Other" }]
+      }]
+  });
+  chart.render();
+
+  var a2010AlwaysOn         = new Array();
+  var a2010HeatingAC        = new Array();
+  var a2010Refrigeration    = new Array();
+  var a2010Dryer            = new Array();
+  var a2010Cooking          = new Array();
+  var a2010Other            = new Array();
+  var a2010DatetimeMidpoint = new Array();
+
+  function parseArrayElements2010(element){
+    a2010AlwaysOn.push(parseFloat(aRawData[element][0]));
+    a2010HeatingAC.push(parseFloat(aRawData[element][1]));
+    a2010Refrigeration.push(parseFloat(aRawData[element][2]));
+    a2010Dryer.push(parseFloat(aRawData[element][3]));
+    a2010Cooking.push(parseFloat(aRawData[element][4]));
+    a2010Other.push(parseFloat(aRawData[element][5]));
+    a2010DatetimeMidpoint.push(new Date(Date.parse(aRawData[element][6])));
+  }
+  //Use ForEach on the indices saved in 2010 to pull the appropriate values into new arrays
+  a2010.forEach(parseArrayElements2010);
+
+  var bigArray2010 = a2010AlwaysOn.concat(a2010HeatingAC, a2010Refrigeration, a2010Dryer, a2010Cooking, a2010Other);
+  var total2010 = bigArray.reduce(function(a,b){return a+b;});
+
+  //want to use this to plot doughnut charts of $/day breakdowns of appliance usage in 2010 and 2010
+  var chart2010 = new CanvasJS.Chart("chartContainerDoughnut2010",
+  {
+    //title:{ text: "Average Usage 2010"},          
+    data: [{
+      type: "doughnut",
+      startAngle: 60,  
+      toolTipContent: "{y}%",
+      showInLegend: false,
+      dataPoints: [
+        {y: Math.round(a2010AlwaysOn.reduce(function(a,b){return a+b;})/total*100),      label: "Always On {y}%",     legendText: "Always On" },
+        {y: Math.round(a2010HeatingAC.reduce(function(a,b){return a+b;})/total*100),     label: "Heating & A/C {y}%", legendText: "Heating & A/C" },
+        {y: Math.round(a2010Refrigeration.reduce(function(a,b){return a+b;})/total*100), label: "Refrigeration {y}%", legendText: "Refrigeration" },
+        {y: Math.round(a2010Dryer.reduce(function(a,b){return a+b;})/total*100),         label: "Dryer {y}%",         legendText: "Dryer" },
+        {y: Math.round(a2010Cooking.reduce(function(a,b){return a+b;})/total*100),       label: "Cooking {y}%",       legendText: "Cooking" },
+        {y: Math.round(a2010Other.reduce(function(a,b){return a+b;})/total*100),         label: "Other {y}%",         legendText: "Other" }]
+      }]
+  });
+  chart2010.render();
+
+    var chartDemo = new CanvasJS.Chart("chartContainerDemo",
+    {
+      //title:{ text: "Coal Reserves of Countries" },
+      axisY:{ title:"Energy Consumed" },
+      data: [{
+        type: "stackedColumn",
+        legendText: "Always On",
+        showInLegend: "true",
+        dataPoints: [
+        {  y: 450, label: "September"},
+        {  y: 750, label: "October"},
+        {  y: 48, label: "November"},
+        {  y: 50, label: "December"},
+        //{ y: aJanuary[0].reduce(function(a,b){return a+b;}), label: "January"},
+        {  y: 875, label: "January"},
+        {  y: 475, label: "February"},
+        {  y: 480, label: "March"}]
+      },
+      {
+        type: "stackedColumn",
+        legendText: "Heating & A/C",
+        showInLegend: "true",
+        dataPoints: [
+        {  y: 450, label: "September"},
+        {  y: 750, label: "October"},
+        {  y: 48, label: "November"},
+        {  y: 50, label: "December"},
+        {  y: 4750, label: "January"},
+        {  y: 4875, label: "February"},
+        {  y: 4870, label: "March"}]
+      }]
+    });
+    chartDemo.render();
+}
+</script>
+</meta>
+<head>
+	<!-- Basic Page Needs
+  ================================================== -->
+	<meta charset="utf-8">
+	<title>Plotwatt Analysis</title>
+	<meta name="description" content="">
+	<meta name="author" content="">
+
+	<!-- Mobile Specific Metas
+  ================================================== -->
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+	<!-- CSS
+  ================================================== -->
+	<link rel="stylesheet" href="stylesheets/base.css">
+	<link rel="stylesheet" href="stylesheets/skeleton.css">
+	<link rel="stylesheet" href="stylesheets/layout.css">
+
+	<!--[if lt IE 9]>
+		<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+	<![endif]-->
+
+	<!-- Favicons
+	================================================== -->
+	<link rel="shortcut icon" href="images/favicon.ico">
+	<link rel="apple-touch-icon" href="images/apple-touch-icon.png">
+	<link rel="apple-touch-icon" sizes="72x72" href="images/apple-touch-icon-72x72.png">
+	<link rel="apple-touch-icon" sizes="114x114" href="images/apple-touch-icon-114x114.png">
+</head>
+<body>
+	<!-- Primary Page Layout
+	================================================== -->
+	<!-- Delete everything in this .container and get started on your own site! -->
+	<div class="container">
+		<div class="sixteen columns">
+			<h1>Plotwatt Analysis</h1>
+			<hr />
+		</div>
+		<div class="sixteen columns">
+			<h2>Timeline</h2>
+			<div id="chartContainer0" style="height: 280px; width: 100%;"></div>
+			<hr />
+		</div>
+		<div class="sixteen columns">
+			<h2>Yearly Breakdown</h2>
+                </div>
+		<div class="eight columns">
+			<h3>Average Usage 2009</h3>
+			<div id="chartContainer" style="height: 240px; width: 100%;"></div>
+		</div>
+		<div class="eight columns">
+			<h3>Average Usage 2010</h3>
+			<div id="chartContainerDoughnut2010" style="height: 240px; width: 100%;"></div>
+		</div>
+		<div class="sixteen columns">
+			<hr />
+			<h2>Monthly Breakdown</h2>
+			<div id="chartContainerDemo" style="height: 280px; width: 100%;"></div>
+		</div>
+		<div class="sixteen columns">
+			<hr />
+			<h2>Typical Week</h2>
+		</div>
+		<div class="sixteen columns">
+			<hr />
+			<h2>Typical Day</h2>
+		</div>
+	</div><!-- container -->
+<!-- End Document
+================================================== -->
+</body>
