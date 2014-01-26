@@ -55,63 +55,14 @@ window.onload = function () {
     this.Other = new Array();
     this.DatetimeMidpoint = new Array();
   }
-  var mySeries = new Series("alldays");
-  //alert(mySeries.name)
-  //alert(mySeries.indices);
 
   var seriesNames = ["2009", "2010", "Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December", "2am - 8am", "8am - 2pm", "2pm - 8pm", "8pm - 2am"];
 
-  //started this. need to fill it out.
-  var aSeries = [{name: "2009",      indices: new Array(), AlwaysOn: new Array(), HeatingAC: new Array(), Refrigeration: new Array(),
-                  Dryer: new Array(), Cooking: new Array(), Other: new Array(), DatetimeMidpoint:  new Array()},
-                 {name: "2010",      indices: new Array(), AlwaysOn: new Array(), HeatingAC: new Array(), Refrigeration: new Array(),
-                  Dryer: new Array(), Cooking: new Array(), Other: new Array(), DatetimeMidpoint:  new Array()},
-                 {name: "Sunday",    indices: new Array(), AlwaysOn: new Array(), HeatingAC: new Array(), Refrigeration: new Array(),
-                  Dryer: new Array(), Cooking: new Array(), Other: new Array(), DatetimeMidpoint:  new Array()},
-                 {name: "Monday",    indices: new Array(), AlwaysOn: new Array(), HeatingAC: new Array(), Refrigeration: new Array(),
-                  Dryer: new Array(), Cooking: new Array(), Other: new Array(), DatetimeMidpoint:  new Array()},
-                 {name: "Tuesday",   indices: new Array(), AlwaysOn: new Array(), HeatingAC: new Array(), Refrigeration: new Array(),
-                  Dryer: new Array(), Cooking: new Array(), Other: new Array(), DatetimeMidpoint:  new Array()},
-                 {name: "Wednesday", indices: new Array(), AlwaysOn: new Array(), HeatingAC: new Array(), Refrigeration: new Array(),
-                  Dryer: new Array(), Cooking: new Array(), Other: new Array(), DatetimeMidpoint:  new Array()},
-                 {name: "Thursday",  indices: new Array(), AlwaysOn: new Array(), HeatingAC: new Array(), Refrigeration: new Array(),
-                  Dryer: new Array(), Cooking: new Array(), Other: new Array(), DatetimeMidpoint:  new Array()},
-                 {name: "Friday",    indices: new Array(), AlwaysOn: new Array(), HeatingAC: new Array(), Refrigeration: new Array(),
-                  Dryer: new Array(), Cooking: new Array(), Other: new Array(), DatetimeMidpoint:  new Array()},
-                 {name: "Saturday",  indices: new Array(), AlwaysOn: new Array(), HeatingAC: new Array(), Refrigeration: new Array(),
-                  Dryer: new Array(), Cooking: new Array(), Other: new Array(), DatetimeMidpoint:  new Array()},
-                 {name: "January",   indices: new Array(), AlwaysOn: new Array(), HeatingAC: new Array(), Refrigeration: new Array(),
-                  Dryer: new Array(), Cooking: new Array(), Other: new Array(), DatetimeMidpoint:  new Array()},
-                 {name: "February",  indices: new Array(), AlwaysOn: new Array(), HeatingAC: new Array(), Refrigeration: new Array(),
-                  Dryer: new Array(), Cooking: new Array(), Other: new Array(), DatetimeMidpoint:  new Array()},
-                 {name: "March",     indices: new Array(), AlwaysOn: new Array(), HeatingAC: new Array(), Refrigeration: new Array(),
-                  Dryer: new Array(), Cooking: new Array(), Other: new Array(), DatetimeMidpoint:  new Array()},
-                 {name: "April",     indices: new Array(), AlwaysOn: new Array(), HeatingAC: new Array(), Refrigeration: new Array(),
-                  Dryer: new Array(), Cooking: new Array(), Other: new Array(), DatetimeMidpoint:  new Array()},
-                 {name: "May",       indices: new Array(), AlwaysOn: new Array(), HeatingAC: new Array(), Refrigeration: new Array(),
-                  Dryer: new Array(), Cooking: new Array(), Other: new Array(), DatetimeMidpoint:  new Array()},
-                 {name: "June",      indices: new Array(), AlwaysOn: new Array(), HeatingAC: new Array(), Refrigeration: new Array(),
-                  Dryer: new Array(), Cooking: new Array(), Other: new Array(), DatetimeMidpoint:  new Array()},
-                 {name: "July",      indices: new Array(), AlwaysOn: new Array(), HeatingAC: new Array(), Refrigeration: new Array(),
-                  Dryer: new Array(), Cooking: new Array(), Other: new Array(), DatetimeMidpoint:  new Array()},
-                 {name: "August",    indices: new Array(), AlwaysOn: new Array(), HeatingAC: new Array(), Refrigeration: new Array(),
-                  Dryer: new Array(), Cooking: new Array(), Other: new Array(), DatetimeMidpoint:  new Array()},
-                 {name: "September", indices: new Array(), AlwaysOn: new Array(), HeatingAC: new Array(), Refrigeration: new Array(),
-                  Dryer: new Array(), Cooking: new Array(), Other: new Array(), DatetimeMidpoint:  new Array()},
-                 {name: "October",   indices: new Array(), AlwaysOn: new Array(), HeatingAC: new Array(), Refrigeration: new Array(),
-                  Dryer: new Array(), Cooking: new Array(), Other: new Array(), DatetimeMidpoint:  new Array()},
-                 {name: "November",  indices: new Array(), AlwaysOn: new Array(), HeatingAC: new Array(), Refrigeration: new Array(),
-                  Dryer: new Array(), Cooking: new Array(), Other: new Array(), DatetimeMidpoint:  new Array()},
-                 {name: "December",  indices: new Array(), AlwaysOn: new Array(), HeatingAC: new Array(), Refrigeration: new Array(),
-                  Dryer: new Array(), Cooking: new Array(), Other: new Array(), DatetimeMidpoint:  new Array()},
-                 {name: "2am - 8am",    indices: new Array(), AlwaysOn: new Array(), HeatingAC: new Array(), Refrigeration: new Array(),
-                  Dryer: new Array(), Cooking: new Array(), Other: new Array(), DatetimeMidpoint:  new Array()},
-                 {name: "8am - 2pm",    indices: new Array(), AlwaysOn: new Array(), HeatingAC: new Array(), Refrigeration: new Array(),
-                  Dryer: new Array(), Cooking: new Array(), Other: new Array(), DatetimeMidpoint:  new Array()},
-                 {name: "2pm - 8pm",    indices: new Array(), AlwaysOn: new Array(), HeatingAC: new Array(), Refrigeration: new Array(),
-                  Dryer: new Array(), Cooking: new Array(), Other: new Array(), DatetimeMidpoint:  new Array()},
-                 {name: "8pm - 2am",    indices: new Array(), AlwaysOn: new Array(), HeatingAC: new Array(), Refrigeration: new Array(),
-                  Dryer: new Array(), Cooking: new Array(), Other: new Array(), DatetimeMidpoint:  new Array()}]
+  var aSeries = [];
+  for (var seriesIndex = 0; seriesIndex < seriesNames.length; ++seriesIndex) {
+    var mySeries = new Series(seriesNames[seriesIndex]);
+    aSeries.push(mySeries);
+  }
 
   for (var i = 0; i < aRawData.length; ++i) {
     var d = new Date(Date.parse(aRawData[i][6]));
@@ -142,7 +93,7 @@ window.onload = function () {
     else if (d.getHours()    ==   23){aSeries[24].indices.push(i);}
   }
 
-  for (var series = 0; series <= 24; ++series) {
+  for (var series = 0; series < aSeries.length; ++series) {
     function parseArrayElements(element){
       aSeries[series].AlwaysOn.push(parseFloat(aRawData[element][0]));
       aSeries[series].HeatingAC.push(parseFloat(aRawData[element][1]));
@@ -152,16 +103,14 @@ window.onload = function () {
       aSeries[series].Other.push(parseFloat(aRawData[element][5]));
       aSeries[series].DatetimeMidpoint.push(new Date(Date.parse(aRawData[element][6])));
     }
-    // Use ForEach on the indices saved in 2009 to pull the appropriate values into new arrays
+    // ForEach of the indices in this series, pull the appropriate values into new arrays
     aSeries[series].indices.forEach(parseArrayElements);
   }
 
-  var bigArray = aSeries[0].AlwaysOn.concat(aSeries[0].HeatingAC, 
-                 aSeries[0].Refrigeration, aSeries[0].Dryer, 
-                 aSeries[0].Cooking, aSeries[0].Other);
-  var total = bigArray.reduce(function(a,b){return a+b;});
 
   // plot doughnut chart of $/day breakdowns of appliance usage in 2009
+  var bigArray = aSeries[0].AlwaysOn.concat(aSeries[0].HeatingAC, aSeries[0].Refrigeration, aSeries[0].Dryer, aSeries[0].Cooking, aSeries[0].Other);
+  var total = bigArray.reduce(function(a,b){return a+b;});
   var chart = new CanvasJS.Chart("chartContainer",
   {
     //title:{ text: "Average Usage 2009"},          
@@ -182,12 +131,10 @@ window.onload = function () {
   chart.render();
 
 
-  var bigArray2010 = aSeries[1].AlwaysOn.concat(aSeries[1].HeatingAC, 
-                     aSeries[1].Refrigeration, aSeries[1].Dryer, 
-                     aSeries[1].Cooking, aSeries[1].Other);
-  var total2010 = bigArray.reduce(function(a,b){return a+b;});
-
-  //want to use this to plot doughnut charts of $/day breakdowns of appliance usage in 2010
+  // plot doughnut charts of $/day breakdowns of appliance usage in 2010
+  var bigArray2010 = aSeries[1].AlwaysOn.concat(aSeries[1].HeatingAC, aSeries[1].Refrigeration, 
+                                                aSeries[1].Dryer, aSeries[1].Cooking, aSeries[1].Other);
+  var total2010 = bigArray2010.reduce(function(a,b){return a+b;});
   var chart2010 = new CanvasJS.Chart("chartContainerDoughnut2010",
   {
     //title:{ text: "Average Usage 2010"},          
@@ -489,12 +436,11 @@ window.onload = function () {
 			<div id="top">
 				<h2>Timeline</h2>
 				<div id="chartContainer0" style="height: 280px; width: 100%;"></div>
-				<h3>Observations</h3>
+				<h4>Observations</h4>
 				<ul class="circle">
-					<li>The sample house has large usage in winter</li>
-					<li>This may be due to an electric furnace</li>
-					<li>There are periods where heating was not reliably detected</li>
-					<li>HVAC may have been changed for holidays</li>
+					<li>Data set has large usage in winter, maybe from electric furnace</li>
+					<li>Two of the periods where no heating was detected coincide with Thanksgiving and Christmas</li>
+					<li>Possible the heat was turned off during holiday travel</li>
 				</ul>
 				<hr />
 			</div>
@@ -523,24 +469,40 @@ window.onload = function () {
 				<hr />
 				<h2>Monthly Breakdown</h2>
 				<div id="chartContainerMonths" style="height: 280px; width: 100%;"></div>
-				&nbsp;
+				<h4>Observations</h4>
+				<ul class="circle">
+					<li>March was a partial month</li>
+					<li>Heating and A/C has very large seasonal variation</li>
+					<li>Always On is very constant across the months sampled</li>
+				</ul>			
 			</div>
-
 			<div id="week">
 				<hr />
 				<h2>Typical Week</h2>
 				<div id="chartContainerDays" style="height: 280px; width: 100%;"></div>
-				&nbsp;
+				<h4>Observations</h4>
+				<ul class="circle">
+					<li>Cooking is only detected Friday, Saturday, and Sunday</li>
+					<li>Eating out or using microwave during week, not oven and range</li>
+					<li>Heating and A/C has some daily variation</li>
+					<li>Always On, Refrigeration, Dryer, and Other are constant across the week</li>
+				</ul>			
 			</div>
-
 			<div id="day">
 				<hr />
 				<h2>Typical Day</h2>
 				<div id="chartContainerHours" style="height: 280px; width: 100%;"></div>
-				&nbsp;
+				<h4>Observations</h4>
+				<ul class="circle">
+					<li>Surprising that Cooking is detected in the early morning hours</li>
+					<li>Strange that the Dryer is detected during all four time periods</li>
+					<li>Heating and A/C varies though the day, likely with temperature variation</li>
+					<li>Always On and Refrigeration are fairly constant across the day</li>
+				</ul>			
 			</div>
 		</div>
 	</div><!-- container -->
 <!-- End Document
 ================================================== -->
 </body>
+
